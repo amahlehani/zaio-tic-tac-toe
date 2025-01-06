@@ -10,7 +10,8 @@ export const HeaderWrapper = styled.header`
 
     .logo {
         height: 3rem;
-        fill: ${(props) => props.theme.colors.text}
+        fill: ${(props) => props.theme.colors.text};
+        cursor: pointer;
     }
 `
 
