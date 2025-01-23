@@ -26,23 +26,23 @@ export const GameContextProvider = (props) => {
   });
 
   const updateBoard = (index) => {
-    const updatedBoard = [...game.board];
+    let updatedBoard = game.board;
     updatedBoard[index] = game.turn;
-    setGame((prevGame) => ({
-      ...prevGame,
+    setGame({
+      ...game,
       board: updatedBoard,
-      turn: prevGame.turn === "x" ? "o" : "x",
-    }));
+      turn: game.turn === "x" ? "o" : "x",
+    });
   };
 
   const resetBoard = () => {
-    setGame((prevGame) => ({
-      ...prevGame,
+    setGame({
+      ...game,
       board: [null, null, null, null, null, null, null, null, null],
       turn: "x",
       winningCombo: [],
       roundWinner: "",
-    }));
+    });
   };
 
   const restartGame = () => {
@@ -86,8 +86,6 @@ export const GameContextProvider = (props) => {
   };
 
   const updateScore = (winner, result) => {
-    // winner is always going to be:
-    // player1, player2, draw
 
     if (winner === "draw") {
       setGame((prevGame) => ({
